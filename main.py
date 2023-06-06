@@ -85,37 +85,37 @@ def is_game_over(board):
       who_won = "No one"
   
   return False
-  
+
+def write_file_AI(x, y, board):
+  file = open("recommendations.txt", "w")
+  board_Changed_fake = board
+  board_Changed_fake[x][y] = AI
+  file.write(board_changed_fake)
+  file.write(x + ", " + y)
+  file.close()
+
 def ai_turn(board):
-    # Load recommendations from the file
-    recommendations = load_recommendations()
+  row_suggest = input("Which row should I go?: ")
+  col_suggest = input("Which column should I go?: ")
+  fake_board = board
+  fake_board[row_suggest][col_suggest]
 
-    # Check if there are any recommendations available
-    if recommendations:
-        row, col = recommendations.pop(0)  # Get the first recommendation
-        board[row][col] = AI
+  with open("recommendations.txt", "r") as file:
+    for line_n, line in enumerate(file, start=1):
+      if line_n % 2 != 0:
+        if fake_board == line_n:
+    
+  for line in lines:
+    if board in 
+    row, col = line.strip().split(",")
+    recommendations.append((int(row), int(col)))
+  return recommendations
 
-        # Save the remaining recommendations back to the file
-        save_recommendations(recommendations)
-
-
-def load_recommendations():
-    recommendations = []
-    with open("recommendations.txt", "r") as file:
-        lines = file.readlines()
-        for line in lines:
-            row, col = line.strip().split(",")
-            recommendations.append((int(row), int(col)))
-    return recommendations
-
-
-def save_recommendations(recommendations):
-    with open("recommendations.txt", "w") as file:
-        for recommendation in recommendations:
-            row, col = recommendation
-            file.write(f"{row},{col}\n")
-
-
+  # Check if there are any recommendations available
+  if recommendations:
+      row, col = recommendations.pop(0)  # Get the first recommendation
+      board[row][col] = AI
+    
 
 def play_game():
   board = [[Empty] * 15 for _ in range(1, 16)]
